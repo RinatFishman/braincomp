@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <AssemblyName>brain</AssemblyName>
+    <Nullable>disable</Nullable>
+    <WarnOn>3390;$(WarnOn)</WarnOn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Domain.fs" />
+    <Compile Include="Config.fs" />
+    <Compile Include="Store.fs" />
+    <Compile Include="Http.fs" />
+    <Compile Include="Connector.fs" />
+    <Compile Include="Salesforce.fs" />
+    <Compile Include="HubSpot.fs" />
+    <Compile Include="Airtable.fs" />
+    <Compile Include="Demo.fs" />
+    <Compile Include="Actions.fs" />
+    <Compile Include="Tools.fs" />
+    <Compile Include="Knowledge.fs" />
+    <Compile Include="Agent.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Anthropic" Version="13.14.0" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="11.0.0" />
+  </ItemGroup>
+
+</Project>
