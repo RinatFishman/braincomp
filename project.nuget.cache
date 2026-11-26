@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "dgSpecHash": "oKpw0MXyDlg=",
+  "success": true,
+  "projectFilePath": "/Users/rinatfishman/Documents/company-brain/src/CompanyBrain/CompanyBrain.fsproj",
+  "expectedPackageFiles": [
+    "/Users/rinatfishman/.nuget/packages/anthropic/13.14.0/anthropic.13.14.0.nupkg.sha512",
+    "/Users/rinatfishman/.nuget/packages/fsharp.core/10.1.203/fsharp.core.10.1.203.nupkg.sha512",
+    "/Users/rinatfishman/.nuget/packages/microsoft.data.sqlite/11.0.0/microsoft.data.sqlite.11.0.0.nupkg.sha512",
+    "/Users/rinatfishman/.nuget/packages/microsoft.data.sqlite.core/11.0.0/microsoft.data.sqlite.core.11.0.0.nupkg.sha512",
+    "/Users/rinatfishman/.nuget/packages/microsoft.extensions.ai.abstractions/10.5.1/microsoft.extensions.ai.abstractions.10.5.1.nupkg.sha512",
+    "/Users/rinatfishman/.nuget/packages/sqlite/3.53.4/sqlite.3.53.4.nupkg.sha512",
+    "/Users/rinatfishman/.nuget/packages/sqlitepclraw.bundle_e_sqlite3/3.0.5/sqlitepclraw.bundle_e_sqlite3.3.0.5.nupkg.sha512",
+    "/Users/rinatfishman/.nuget/packages/sqlitepclraw.config.e_sqlite3/3.0.5/sqlitepclraw.config.e_sqlite3.3.0.5.nupkg.sha512",
+    "/Users/rinatfishman/.nuget/packages/sqlitepclraw.core/3.0.5/sqlitepclraw.core.3.0.5.nupkg.sha512",
+    "/Users/rinatfishman/.nuget/packages/sqlitepclraw.provider.e_sqlite3/3.0.5/sqlitepclraw.provider.e_sqlite3.3.0.5.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<linker>
+  <assembly fullname="brain">
+    <resource name="FSharpSignatureData.brain" action="remove"></resource>
+    <resource name="FSharpSignatureCompressedData.brain" action="remove"></resource>
+    <resource name="FSharpSignatureDataB.brain" action="remove"></resource>
+    <resource name="FSharpSignatureCompressedDataB.brain" action="remove"></resource>
+    <resource name="FSharpOptimizationData.brain" action="remove"></resource>
+    <resource name="FSharpOptimizationCompressedData.brain" action="remove"></resource>
+    <resource name="FSharpOptimizationDataB.brain" action="remove"></resource>
+    <resource name="FSharpOptimizationCompressedDataB.brain" action="remove"></resource>
+    <resource name="FSharpOptimizationInfo.brain" action="remove"></resource>
+    <resource name="FSharpSignatureInfo.brain" action="remove"></resource>
+  </assembly>
+</linker>
