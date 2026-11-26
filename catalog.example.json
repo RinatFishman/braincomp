@@ -1,0 +1,14 @@
+[
+  { "level": 1, "key": "foundations", "name": "Cyber Foundations",
+    "audience": "Total beginners and career changers", "price": 490,
+    "keywords": ["foundations", "beginner", "fundamentals", "intro to cyber"] },
+  { "level": 2, "key": "soc1", "name": "SOC Analyst Tier 1",
+    "audience": "New SOC analysts: monitoring, triage, alert handling", "price": 1900,
+    "keywords": ["soc tier 1", "soc 1", "soc1", "tier 1"] },
+  { "level": 3, "key": "soc2", "name": "SOC Analyst Tier 2",
+    "audience": "Experienced analysts: incident response, threat hunting, forensics", "price": 2900,
+    "keywords": ["soc tier 2", "soc 2", "soc2", "tier 2", "incident response", "threat hunting"] },
+  { "level": 4, "key": "ciso", "name": "CISO & Executive Program",
+    "audience": "CISOs, executives and boards: risk, governance, crisis leadership", "price": 6500,
+    "keywords": ["ciso", "executive", "board", "leadership"] }
+]

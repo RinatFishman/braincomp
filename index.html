@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Company Brain</title>
-<meta name="description" content="One memory for Salesforce, HubSpot and Airtable. Ask questions in plain language, approve every change, keep the knowledge your CRM doesn't hold.">
+<meta name="description" content="A CRM brain for selling cybersecurity courses, from total beginners to CISOs. Ask across Salesforce, HubSpot and Airtable, move learners up the course ladder, keep the CRM clean, and approve every change.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -72,7 +72,7 @@ nav.links a:hover { color: var(--text); }
 @media (max-width: 720px) { nav.links { display: none; } header.top .btn { margin-left: auto; } }
 
 /* ---------- hero ---------- */
-.hero { padding: 72px 0 40px; }
+.hero { padding-top: 72px; padding-bottom: 40px; }
 .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: var(--muted); padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); }
 .dots { display: inline-flex; gap: 4px; }
 .dots i { width: 8px; height: 8px; border-radius: 50%; display: block; }
@@ -80,16 +80,35 @@ h1 { font-size: clamp(36px, 5.4vw, 60px); line-height: 1.05; letter-spacing: -.0
 h1 em { font-style: normal; color: var(--accent); }
 .lede { font-size: 19px; color: var(--muted); max-width: 58ch; margin: 0 0 28px; }
 .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-.install { font-size: 13px; padding: 10px 14px; border-radius: 10px; background: var(--term-bg); color: var(--term-text); border: 1px solid var(--term-line); }
-.install b { color: var(--accent); font-weight: 500; }
+.hero-q { font-size: 15px; padding: 10px 16px; border-radius: 18px 18px 5px 18px; background: var(--text); color: var(--bg); }
 
-.pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 56px; }
+.pillars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 56px; }
 .pillar { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px; box-shadow: var(--shadow); }
 .pillar h3 { margin: 10px 0 6px; font-size: 17px; letter-spacing: -.01em; }
 .pillar p { margin: 0; color: var(--muted); font-size: 15px; }
 .pillar .ico { width: 34px; height: 34px; border-radius: 9px; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; }
 .pillar .ico svg { width: 18px; height: 18px; }
-@media (max-width: 820px) { .pillars { grid-template-columns: 1fr; } }
+@media (max-width: 1000px) { .pillars { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .pillars { grid-template-columns: 1fr; } }
+
+/* ---------- learning path ---------- */
+.ladder { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; padding-bottom: 42px; }
+.rung { position: relative; padding: 18px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); }
+.rung:nth-child(1) { transform: translateY(42px); } .rung:nth-child(2) { transform: translateY(28px); } .rung:nth-child(3) { transform: translateY(14px); }
+.rung .lv { display: inline-block; font: 600 12px "JetBrains Mono", monospace; color: var(--accent); background: var(--accent-soft); padding: 2px 8px; border-radius: 6px; }
+.rung h3 { margin: 10px 0 4px; font-size: 17px; letter-spacing: -.01em; }
+.rung .who { margin: 0 0 12px; color: var(--muted); font-size: 14.5px; }
+.rung .watch { margin: 0; padding-top: 10px; border-top: 1px dashed var(--line); font-size: 13.5px; color: var(--muted); }
+.rung .watch b { display: block; color: var(--text); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 2px; }
+.rung:not(:last-child)::after { content: "→"; position: absolute; right: -16px; top: 50%; transform: translateY(-50%); width: 22px; height: 22px; border-radius: 50%; background: var(--bg); border: 1px solid var(--line); display: grid; place-items: center; font-size: 12px; color: var(--accent); z-index: 1; }
+.path-note { margin: 20px 0 0; font-size: 14px; color: var(--muted); }
+.path-note code { font-size: 12.5px; background: var(--surface-2); padding: 1px 5px; border-radius: 4px; }
+@media (max-width: 900px) {
+  .ladder { grid-template-columns: 1fr 1fr; padding-bottom: 0; }
+  .rung:nth-child(n) { transform: none; }
+  .rung:not(:last-child)::after { display: none; }
+}
+@media (max-width: 560px) { .ladder { grid-template-columns: 1fr; } }
 
 /* ---------- sections ---------- */
 section { padding: 64px 0; }
@@ -136,62 +155,79 @@ section h2 { font-size: clamp(26px, 3.4vw, 36px); letter-spacing: -.02em; margin
 .demo-body { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); }
 @media (max-width: 900px) { .demo-body { grid-template-columns: 1fr; } }
 
-/* terminal */
-.term { background: var(--term-bg); color: var(--term-text); font: 13.5px/1.6 "JetBrains Mono", monospace; display: flex; flex-direction: column; min-height: 520px; }
-.term-bar { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-bottom: 1px solid var(--term-line); color: var(--term-muted); font-size: 12px; }
-.term-bar .lights { display: flex; gap: 6px; margin-right: 6px; }
-.term-bar .lights i { width: 10px; height: 10px; border-radius: 50%; background: #3a3b40; display: block; }
-.term-bar .spacer { flex: 1; }
-.term-ctl { background: transparent; border: 1px solid var(--term-line); color: var(--term-muted); font: 12px "JetBrains Mono", monospace; padding: 3px 9px; border-radius: 6px; cursor: pointer; }
-.term-ctl:hover { color: var(--term-text); border-color: #444; }
-.term-out { padding: 16px 18px 22px; overflow-y: auto; height: 520px; scroll-behavior: smooth; }
-@media (max-width: 600px) { .term-out { height: 460px; font-size: 12.5px; padding: 14px; } }
-.ln { white-space: pre-wrap; word-break: break-word; margin: 0; }
-.prompt { color: var(--accent); }
-.dim { color: var(--term-muted); }
-.tool { color: #9fb7d9; }
-.ok { color: #7ccf9b; }
-.bad { color: #e48f8f; }
-.say { color: var(--term-text); }
-.user-q { margin: 4px 0 10px; }
-.user-q .q { color: #fff; }
-.cursor { display: inline-block; width: 8px; height: 15px; background: var(--term-text); vertical-align: -2px; animation: blink 1s steps(1) infinite; }
-@keyframes blink { 50% { opacity: 0; } }
-.thinking { color: var(--term-muted); }
-.thinking::after { content: "…"; animation: dots 1.2s steps(4) infinite; display: inline-block; width: 1.2em; overflow: hidden; vertical-align: bottom; }
-@keyframes dots { 0% { width: 0; } 100% { width: 1.2em; } }
-.result { margin: 4px 0 12px 14px; border-left: 2px solid var(--term-line); padding-left: 12px; }
-.rt { width: 100%; border-collapse: collapse; font-size: 12.5px; }
-.rt td, .rt th { text-align: left; padding: 2px 10px 2px 0; vertical-align: top; }
-.rt th { color: var(--term-muted); font-weight: 400; }
-.rt .num { text-align: right; font-variant-numeric: tabular-nums; }
-.snip { margin: 2px 0 6px; }
-.snip b { color: #f2c37a; font-weight: 500; }
-.src { display: inline-block; font-size: 11px; padding: 0 6px; border-radius: 4px; margin-right: 6px; color: #111; font-weight: 500; }
+/* chat */
+.chat { background: var(--surface); display: flex; flex-direction: column; min-width: 0; }
+.chat-bar { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+.chat-bar .who { display: flex; flex-direction: column; line-height: 1.25; min-width: 0; }
+.chat-bar .who b { font-size: 14px; }
+.chat-bar .who span { font-size: 12px; color: var(--muted); }
+.chat-bar .spacer { flex: 1; }
+.ctl { background: transparent; border: 1px solid var(--line); color: var(--muted); font: 500 12px Inter, sans-serif; padding: 4px 11px; border-radius: 999px; cursor: pointer; white-space: nowrap; }
+.ctl:hover { color: var(--text); border-color: var(--muted); }
+.avatar { flex: 0 0 auto; width: 28px; height: 28px; border-radius: 8px; background: var(--accent); display: grid; place-items: center; }
+.avatar svg { width: 16px; height: 16px; }
+.chat-out { background: var(--bg); padding: 18px 18px 22px; overflow-y: auto; height: 540px; scroll-behavior: smooth; display: flex; flex-direction: column; gap: 12px; }
+@media (max-width: 600px) { .chat-out { height: 480px; padding: 14px 12px; } }
+.msg { display: flex; gap: 8px; align-items: flex-end; max-width: 90%; animation: pop .3s ease; }
+.msg.me { align-self: flex-end; }
+.msg.bot { align-self: flex-start; }
+.msg .avatar { width: 26px; height: 26px; border-radius: 8px; margin-bottom: 2px; }
+.msg .avatar svg { width: 14px; height: 14px; }
+.bubble { padding: 10px 14px; border-radius: 16px; font-size: 14.5px; line-height: 1.55; min-width: 0; overflow-wrap: anywhere; }
+.msg.me .bubble { background: var(--text); color: var(--bg); border-bottom-right-radius: 5px; }
+.msg.bot .bubble { background: var(--surface); border: 1px solid var(--line); border-bottom-left-radius: 5px; }
+.bubble p { margin: 0 0 8px; }
+.bubble p:last-child { margin: 0; }
+.bubble ul { margin: 4px 0 8px; padding-left: 18px; }
+.bubble li { margin: 3px 0; }
+.bubble .id { font: 12px "JetBrains Mono", monospace; color: var(--muted); }
+.typing { display: inline-flex; align-items: center; gap: 10px; color: var(--muted); font-size: 13.5px; }
+.dots3 { display: inline-flex; gap: 4px; }
+.dots3 i { width: 6px; height: 6px; border-radius: 50%; background: var(--muted); animation: bounce 1.2s infinite; }
+.dots3 i:nth-child(2) { animation-delay: .15s; }
+.dots3 i:nth-child(3) { animation-delay: .3s; }
+@keyframes bounce { 0%, 60%, 100% { opacity: .35; transform: none; } 30% { opacity: 1; transform: translateY(-3px); } }
+.sys { align-self: center; display: inline-flex; align-items: center; flex-wrap: wrap; justify-content: center; gap: 6px; max-width: 100%; font-size: 12.5px; color: var(--muted); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; text-align: center; animation: pop .3s ease; }
+.sys .ok { color: var(--ok); font-weight: 700; }
+.spin { width: 11px; height: 11px; border-radius: 50%; border: 2px solid var(--line); border-top-color: var(--accent); animation: spin .8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.src { display: inline-block; font: 500 11px "JetBrains Mono", monospace; padding: 0 6px; border-radius: 4px; color: #111; }
 .src.salesforce { background: var(--sf); color: #fff; }
 .src.hubspot { background: var(--hs); }
 .src.airtable { background: var(--at); }
-.src.note { background: #c9c3f0; }
-.answer { margin: 10px 0 4px; padding: 12px 14px; background: #1f2024; border: 1px solid var(--term-line); border-radius: 10px; font-family: Inter, sans-serif; font-size: 14.5px; line-height: 1.55; }
-.answer p { margin: 0 0 8px; }
-.answer p:last-child { margin: 0; }
-.answer ul { margin: 4px 0 8px; padding-left: 18px; }
-.answer li { margin: 2px 0; }
-.answer .id { font: 12px "JetBrains Mono", monospace; color: var(--term-muted); }
-.answer strong { color: #fff; }
-.approve { margin: 10px 0 12px; border: 1px solid #6b4a2a; background: #2a1f17; border-radius: 10px; padding: 12px 14px; font-size: 13px; }
-.approve .h { color: #f2b27a; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; margin-bottom: 6px; }
-.approve .what { color: #fff; }
-.approve .meta { color: var(--term-muted); margin-top: 4px; }
+.approve { border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--line)); background: var(--accent-soft); border-radius: 14px; border-bottom-left-radius: 5px; padding: 12px 14px; font-size: 14px; min-width: 0; }
+.approve .h { color: var(--accent); font-size: 11.5px; letter-spacing: .05em; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; }
+.approve .kind { font-weight: 600; }
+.approve .meta { color: var(--muted); margin-top: 4px; font-size: 13px; }
 .approve .acts { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
 .approve button { font: 500 13px Inter, sans-serif; padding: 7px 14px; border-radius: 8px; cursor: pointer; border: 1px solid transparent; }
-.approve .yes { background: #3f9a63; color: #fff; }
-.approve .no { background: transparent; color: var(--term-text); border-color: #555; }
+.approve .yes { background: var(--ok); color: var(--bg); }
+.approve .no { background: var(--surface); color: var(--text); border-color: var(--line); }
 .approve.decided .acts { display: none; }
-.approve .verdict { margin-top: 8px; }
-.replay-row { margin-top: 14px; display: flex; gap: 8px; flex-wrap: wrap; }
-.next-btn { background: var(--accent); color: #fff; border: 0; font: 500 13px Inter, sans-serif; padding: 8px 14px; border-radius: 8px; cursor: pointer; }
-.ghost-btn { background: transparent; color: var(--term-text); border: 1px solid #444; font: 500 13px Inter, sans-serif; padding: 8px 14px; border-radius: 8px; cursor: pointer; }
+.approve .verdict { margin-top: 8px; font-size: 13px; font-weight: 500; }
+.approve .verdict.ok { color: var(--ok); }
+.approve .verdict.bad { color: var(--no); }
+.replay-row { align-self: center; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-top: 4px; }
+.next-btn { background: var(--accent); color: #fff; border: 0; font: 500 13px Inter, sans-serif; padding: 8px 14px; border-radius: 999px; cursor: pointer; }
+.ghost-btn { background: var(--surface); color: var(--text); border: 1px solid var(--line); font: 500 13px Inter, sans-serif; padding: 8px 14px; border-radius: 999px; cursor: pointer; }
+.msg.cont { margin-top: -8px; }
+.msg.bot.cont .avatar { visibility: hidden; }
+.composer { display: flex; gap: 8px; align-items: center; padding: 10px 12px; border-top: 1px solid var(--line); background: var(--surface); }
+.composer .field { flex: 1; min-width: 0; min-height: 40px; display: flex; align-items: center; padding: 8px 14px; border: 1px solid var(--line); border-radius: 20px; background: var(--bg); font-size: 14.5px; line-height: 1.4; transition: border-color .2s; }
+.composer .ph { color: var(--muted); font-size: 13.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.composer.typing .ph { display: none; }
+.composer.typing .field { border-color: var(--accent); }
+.composer.typing #draft::after { content: ""; display: inline-block; width: 2px; height: 1.1em; background: var(--accent); vertical-align: -3px; margin-left: 1px; animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.composer .send { flex: 0 0 auto; width: 36px; height: 36px; border-radius: 50%; background: var(--line); color: var(--muted); display: grid; place-items: center; transition: background .2s, color .2s, transform .15s; }
+.composer.typing .send { background: var(--accent); color: #fff; }
+.composer.ready .send { transform: scale(.88); }
+.composer .send svg { width: 16px; height: 16px; }
+.suggest { align-self: flex-end; display: flex; flex-direction: column; align-items: flex-end; gap: 6px; margin-top: 2px; animation: pop .3s ease; }
+.suggest .hint { font-size: 11.5px; color: var(--muted); }
+.reply { background: var(--surface); color: var(--text); border: 1px solid var(--text); border-radius: 16px; border-bottom-right-radius: 5px; padding: 8px 14px; font: 500 14px Inter, sans-serif; cursor: pointer; transition: background .15s, color .15s; }
+.reply:hover { background: var(--text); color: var(--bg); }
+.reply.ghost { border-color: var(--line); color: var(--muted); }
 
 /* side panel */
 .side { border-left: 1px solid var(--line); display: flex; flex-direction: column; min-width: 0; }
@@ -202,17 +238,36 @@ section h2 { font-size: clamp(26px, 3.4vw, 36px); letter-spacing: -.02em; margin
 .explain { font-size: 15px; }
 .explain .step-title { font-weight: 600; margin: 0 0 4px; }
 .explain p { margin: 0; color: var(--muted); }
-.stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-.stat { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
-.stat .v { font-size: 22px; font-weight: 700; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
-.stat .k { font-size: 12px; color: var(--muted); }
-.audit { list-style: none; margin: 0; padding: 0; font-size: 13px; display: flex; flex-direction: column; gap: 8px; }
+.levels { display: flex; flex-direction: column; gap: 10px; }
+.lvl-row { display: grid; grid-template-columns: 104px 1fr 52px; align-items: center; gap: 10px; font-size: 13px; }
+.lvl-row .nm { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lvl-row .nm b { display: inline-grid; place-items: center; width: 18px; height: 18px; margin-right: 4px; border-radius: 5px; background: var(--accent-soft); color: var(--accent); font: 600 11px "JetBrains Mono", monospace; }
+.lvl-row .bar { height: 10px; border-radius: 999px; background: var(--bg); border: 1px solid var(--line); overflow: hidden; }
+.lvl-row .bar i { display: block; height: 100%; width: 0; background: var(--accent); border-radius: 999px; transition: width .7s ease; }
+.lvl-row .amt { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
+.lvl-row.bump .amt { animation: bump 1.4s ease; }
+.lvl-row.bump .bar i { animation: barflash 1.4s ease; }
+@keyframes barflash { 0%, 40% { background: var(--ok); } 100% { background: var(--accent); } }
+@keyframes bump { 0% { color: var(--ok); transform: scale(1.15); } 100% { color: inherit; transform: none; } }
+.levels-foot { margin: 12px 0 0; font-size: 12.5px; color: var(--muted); }
+.audit { list-style: none; margin: 0; padding: 0 2px 0 0; font-size: 13px; display: flex; flex-direction: column; gap: 8px; max-height: 330px; overflow-y: auto; }
 .audit li { display: flex; gap: 8px; align-items: flex-start; padding: 8px 10px; border-radius: 8px; background: var(--bg); border: 1px solid var(--line); animation: pop .3s ease; }
 .audit .mark { flex: 0 0 auto; width: 18px; height: 18px; border-radius: 50%; display: grid; place-items: center; font-size: 11px; font-weight: 700; color: #fff; margin-top: 1px; }
 .audit .mark.y { background: var(--ok); }
 .audit .mark.n { background: var(--no); }
 .audit .t { color: var(--muted); font-size: 12px; }
 .audit .empty { color: var(--muted); background: transparent; border: 1px dashed var(--line); justify-content: center; }
+.audit .mark.w { background: var(--at); color: #111; animation: pulse 1.2s ease-in-out infinite; }
+.audit li.pending { border-color: color-mix(in srgb, var(--at) 60%, var(--line)); }
+.audit li.flash { animation: flash 1.2s ease; }
+.audit .src { margin-right: 4px; }
+@keyframes pulse { 50% { transform: scale(1.15); opacity: .7; } }
+@keyframes flash { 0% { background: var(--accent-soft); } 100% { background: var(--bg); } }
+.side h4 .count { display: inline-grid; place-items: center; min-width: 18px; height: 18px; padding: 0 5px; margin-left: 6px; border-radius: 999px; background: var(--accent); color: #fff; font-size: 11px; letter-spacing: 0; vertical-align: 1px; }
+.side h4 .count[hidden] { display: none; }
+.node[data-node="write"].on .box { border-color: var(--crm, var(--accent)); box-shadow: 0 0 0 4px color-mix(in srgb, var(--crm, var(--accent)) 25%, transparent); }
+.node[data-node="write"].on .box svg { color: var(--crm, var(--accent)); }
+.node[data-node="write"].done .box { border-color: color-mix(in srgb, var(--crm, var(--accent)) 50%, var(--line)); }
 @keyframes pop { from { transform: translateY(4px); opacity: 0; } }
 .demo-note { font-size: 13px; color: var(--muted); margin-top: 14px; text-align: center; }
 
@@ -266,6 +321,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space
       Company Brain
     </a>
     <nav class="links">
+      <a href="#path">Learning path</a>
       <a href="#demo">Demo</a>
       <a href="#how">How it works</a>
       <a href="#safety">Safety</a>
@@ -281,37 +337,56 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space
 <main>
 <div class="wrap hero">
   <span class="eyebrow"><span class="dots"><i style="background:var(--sf)"></i><i style="background:var(--hs)"></i><i style="background:var(--at)"></i></span> Salesforce · HubSpot · Airtable</span>
-  <h1>One memory for <em>every CRM</em> your team uses.</h1>
-  <p class="lede">Ask about your pipeline in plain language. Let it log calls and set follow-ups, with your approval on every change. Keep the context that never makes it into the CRM.</p>
+  <h1>Sell every level of cyber training, <em>from first course to CISO.</em></h1>
+  <p class="lede">One brain over Salesforce, HubSpot and Airtable, built for selling cybersecurity courses. Ask about learners and team deals in plain language, see who is ready for the next level, keep the CRM clean, and approve every change before it lands.</p>
   <div class="hero-cta">
     <a class="btn primary" href="#demo">Watch it work
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-    <code class="install"><b>$</b> brain ask "what's slipping this month?"</code>
+    <span class="hero-q">Who's ready for the next level?</span>
   </div>
 
   <div class="pillars">
     <div class="pillar">
       <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div>
       <h3>Ask across all three</h3>
-      <p>Deals in Salesforce, companies in HubSpot, a tracker in Airtable: one question covers all of them.</p>
+      <p>Team deals in Salesforce, webinar leads in HubSpot, individual learners in Airtable: one question covers them all, with your notes for the why.</p>
+    </div>
+    <div class="pillar">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4v-5h4v-5h4V5h4"/></svg></div>
+      <h3>Moves learners up the ladder</h3>
+      <p>Every deal is matched to a course level. It finds graduates with nothing booked at the next level and drafts that deal, priced from your catalog.</p>
+    </div>
+    <div class="pillar">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/><path d="M10 11v5M14 11v5"/></svg></div>
+      <h3>Keeps the CRM clean</h3>
+      <p>Duplicate learners across CRMs, deals with no amount or course, close dates in the past: it finds them and tells you what to fix.</p>
     </div>
     <div class="pillar">
       <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
       <h3>Changes need your yes</h3>
-      <p>It drafts the call log, the task, the stage change. Nothing reaches a CRM until you approve it, and every proposal is logged.</p>
-    </div>
-    <div class="pillar">
-      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg></div>
-      <h3>Remembers the why</h3>
-      <p>Account plans, objections, who really decides. Notes are linked to the right account and searched alongside the CRM.</p>
+      <p>Calls, tasks, stage changes and new deals are drafted for you. Nothing reaches a CRM until you approve it, and every proposal is logged.</p>
     </div>
   </div>
 </div>
 
+<section id="path">
+  <div class="wrap">
+    <h2>One ladder, four levels</h2>
+    <p class="section-lede">Your catalog tells the brain which course every deal is for, so it can report by level and spot who should climb next.</p>
+    <div class="ladder">
+      <div class="rung"><span class="lv">Level 1</span><h3>Cyber Foundations</h3><p class="who">Total beginners and career changers.</p><p class="watch"><b>The brain watches for</b> graduates asking how to get a SOC job.</p></div>
+      <div class="rung"><span class="lv">Level 2</span><h3>SOC Analyst Tier 1</h3><p class="who">Monitoring, triage and alert handling.</p><p class="watch"><b>The brain watches for</b> team cohorts that passed the final lab.</p></div>
+      <div class="rung"><span class="lv">Level 3</span><h3>SOC Analyst Tier 2</h3><p class="who">Incident response, threat hunting and forensics.</p><p class="watch"><b>The brain watches for</b> strong analysts their manager wants to grow.</p></div>
+      <div class="rung"><span class="lv">Level 4</span><h3>CISO &amp; Executive</h3><p class="who">Risk, governance, board reporting and crisis leadership.</p><p class="watch"><b>The brain watches for</b> security leaders whose boards are asking questions.</p></div>
+    </div>
+    <p class="path-note">Course names, levels and prices live in one <code>catalog.json</code>. Rename them, add a level, change prices: every deal is re-matched on the next run.</p>
+  </div>
+</section>
+
 <section id="demo">
   <div class="wrap">
     <h2>See the whole process</h2>
-    <p class="section-lede">Pick a scenario. Follow the request through the pipeline, see which tools Claude calls and what comes back, and decide for yourself when it proposes a change.</p>
+    <p class="section-lede">Pick a scenario. Follow the conversation, watch the request move through the pipeline, and decide for yourself when it proposes a change.</p>
 
     <div class="demo">
       <div class="scenarios" role="group" aria-label="Demo scenarios" id="chips"></div>
@@ -329,39 +404,39 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space
       </div>
 
       <div class="demo-body">
-        <div class="term">
-          <div class="term-bar">
-            <span class="lights"><i></i><i></i><i></i></span>
-            <span>~/company-brain</span>
+        <div class="chat">
+          <div class="chat-bar">
+            <span class="avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/></svg></span>
+            <span class="who"><b>Company Brain</b><span>Salesforce · HubSpot · Airtable</span></span>
             <span class="spacer"></span>
-            <button class="term-ctl" id="speed" title="Playback speed">1×</button>
-            <button class="term-ctl" id="skip">Skip ▸▸</button>
+            <button class="ctl" id="speed" title="Playback speed">1×</button>
+            <button class="ctl" id="skip">Skip ▸▸</button>
           </div>
-          <div class="term-out" id="out" aria-live="polite"></div>
+          <div class="chat-out" id="out" aria-live="polite"></div>
+          <div class="composer" id="composer" aria-hidden="true">
+            <div class="field"><span id="draft"></span><span class="ph">Scripted demo · tap a suggested reply</span></div>
+            <span class="send"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span>
+          </div>
         </div>
         <aside class="side">
           <div class="side-sec explain" id="explain">
             <h4>What's happening</h4>
             <p class="step-title">Choose a scenario above</p>
-            <p>Start with syncing, then ask questions, then let it make a change.</p>
+            <p>Start with syncing, then ask questions, move a learner up a level, and tidy the CRM.</p>
           </div>
           <div class="side-sec">
-            <h4>In the brain</h4>
-            <div class="stats">
-              <div class="stat"><div class="v" id="s-acc">0</div><div class="k">accounts</div></div>
-              <div class="stat"><div class="v" id="s-deal">0</div><div class="k">open deals</div></div>
-              <div class="stat"><div class="v" id="s-act">0</div><div class="k">activities</div></div>
-              <div class="stat"><div class="v" id="s-note">0</div><div class="k">notes</div></div>
-            </div>
+            <h4>Open pipeline by level</h4>
+            <div class="levels" id="levels"></div>
+            <p class="levels-foot" id="levels-foot">Nothing synced yet</p>
           </div>
           <div class="side-sec">
-            <h4>Audit log</h4>
+            <h4>Audit log <span class="count" id="audit-count" hidden>0</span></h4>
             <ul class="audit" id="audit"><li class="empty">No changes proposed yet</li></ul>
           </div>
         </aside>
       </div>
     </div>
-    <p class="demo-note">A scripted replay, built from the demo dataset that ships with the app (<code>brain demo</code>). Your approve / decline choices are real and change what happens next.</p>
+    <p class="demo-note">A scripted replay of a made-up cyber training business, built from the demo dataset that ships with the app (<code>brain demo</code>). Prices are placeholders. Your approve / decline choices are real and change what happens next.</p>
   </div>
 </section>
 
@@ -371,9 +446,9 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space
     <p class="section-lede">A small F# command-line app. Your data lives in one SQLite file on your machine; Claude reads it through a handful of tools.</p>
     <div class="steps">
       <div class="step"><h3>Sync</h3><p><code>brain sync</code> copies accounts, contacts, deals and activities from each CRM into one shared shape. Every record keeps the id of the CRM that owns it.</p></div>
-      <div class="step"><h3>Remember</h3><p><code>brain ingest</code> imports your notes; <code>brain remember</code> saves a quick one. Each is linked to the account it mentions and made searchable.</p></div>
-      <div class="step"><h3>Ask</h3><p>Claude writes SQL for anything you can count, searches notes for the why, and answers with the ids of the records it means.</p></div>
-      <div class="step"><h3>Act</h3><p>Proposed writes are shown to you first. Approved ones go to the right CRM, are mirrored locally, and land in the audit log.</p></div>
+      <div class="step"><h3>Match to a level</h3><p>Each deal is matched to a course level from its name or course field, using your catalog. <code>brain pipeline</code> shows the result.</p></div>
+      <div class="step"><h3>Ask</h3><p>Claude writes SQL for anything you can count, searches your notes for the why, and answers with the ids of the records it means.</p></div>
+      <div class="step"><h3>Act</h3><p>Calls, tasks, stage changes and new deals are shown to you first. Approved ones go to the right CRM and land in the audit log.</p></div>
     </div>
   </div>
 </section>
@@ -384,7 +459,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space
     <p class="section-lede">A brain that can change your CRM has to be predictable. These rules are in the code, not in a prompt.</p>
     <div class="safety">
       <div class="safe"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div><div><h3>Read-only queries</h3><p>Claude's SQL runs on a connection SQLite itself opens read-only. One <code>SELECT</code> at a time.</p></div></div>
-      <div class="safe"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><div><h3>Every write needs a yes</h3><p>Calls, tasks and stage changes are shown in full: what, on which record, in which CRM. The default answer is no.</p></div></div>
+      <div class="safe"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><div><h3>Every write needs a yes</h3><p>Calls, tasks, stage changes and new deals are shown in full: what, on which record, in which CRM. The default answer is no.</p></div></div>
       <div class="safe"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg></div><div><h3>Full audit trail</h3><p>Approved, declined and failed proposals are all recorded. <code>brain audit</code> shows the history.</p></div></div>
       <div class="safe"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.6 7.6a5.5 5.5 0 1 1-7.8 7.8 5.5 5.5 0 0 1 7.8-7.8zm0 0L15.5 7.5m0 0 3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg></div><div><h3>Keys stay with you</h3><p>CRM tokens live in your environment. Claude sees query results, never credentials.</p></div></div>
     </div>
@@ -402,14 +477,17 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space
 <span class="p">$ </span>brain demo
 
 <span class="c"># no API key needed for these</span>
-<span class="p">$ </span>brain stale 30 100000
-<span class="p">$ </span>brain search competitor
+<span class="p">$ </span>brain pipeline     <span class="c"># open deals per course level</span>
+<span class="p">$ </span>brain upsell       <span class="c"># graduates ready for the next level</span>
+<span class="p">$ </span>brain hygiene      <span class="c"># records to fix</span>
+<span class="p">$ </span>brain dupes        <span class="c"># the same learner twice</span>
 
 <span class="c"># talk to it</span>
 <span class="p">$ </span>export ANTHROPIC_API_KEY=sk-ant-...
 <span class="p">$ </span>brain chat
 
-<span class="c"># connect your CRMs, then sync</span>
+<span class="c"># your courses, your CRMs, then sync</span>
+<span class="p">$ </span>cp catalog.example.json catalog.json
 <span class="p">$ </span>cp .env.example .env
 <span class="p">$ </span>brain sync</pre>
       <table class="crm">
@@ -417,7 +495,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space
         <tbody>
           <tr><td><span class="sw" style="background:var(--sf)"></span>Salesforce</td><td>Instance URL plus an access token, or a Connected App with the client-credentials flow.</td></tr>
           <tr><td><span class="sw" style="background:var(--hs)"></span>HubSpot</td><td>A private app token with read/write on companies, contacts, deals and engagements.</td></tr>
-          <tr><td><span class="sw" style="background:var(--at)"></span>Airtable</td><td>A personal access token and base id. Common field names like <code>Name</code>, <code>Stage</code>, <code>Amount</code> are matched automatically.</td></tr>
+          <tr><td><span class="sw" style="background:var(--at)"></span>Airtable</td><td>A personal access token and base id. Common field names like <code>Name</code>, <code>Stage</code>, <code>Amount</code> and <code>Course</code> are matched automatically.</td></tr>
         </tbody>
       </table>
     </div>
@@ -427,7 +505,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space
 
 <footer>
   <div class="wrap">
-    <span>Company Brain · F# · SQLite · Claude</span>
+    <span>Company Brain for cyber training · F# · SQLite · Claude</span>
     <a id="gh-foot" href="#start">Source on GitHub</a>
   </div>
 </footer>
@@ -437,110 +515,199 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space
 const REPO_URL = "";
 if (REPO_URL) for (const id of ["gh-top", "gh-foot"]) document.getElementById(id).href = REPO_URL;
 
-/* ---------------- demo data (mirrors src/CompanyBrain/Demo.fs) ---------------- */
+/* ---------------- demo script (mirrors src/CompanyBrain/Demo.fs) ---------------- */
 const S = (src) => `<span class="src ${src}">${src}</span>`;
-const table = (cols, rows, num = []) =>
-  `<table class="rt"><tr>${cols.map(c => `<th class="${num.includes(c) ? "num" : ""}">${c}</th>`).join("")}</tr>` +
-  rows.map(r => `<tr>${r.map((v, i) => `<td class="${num.includes(cols[i]) ? "num" : ""}">${v}</td>`).join("")}</tr>`).join("") + `</table>`;
 
+const LEVELS = [
+  { key: "foundations", name: "Foundations" },
+  { key: "soc1", name: "SOC Tier 1" },
+  { key: "soc2", name: "SOC Tier 2" },
+  { key: "ciso", name: "CISO & Exec" },
+];
+
+// ask: the user's words (an array sends several quick messages, the way people text).
+// say: the brain's reply (an array arrives as several bubbles, streamed word by word).
+// approve: a proposed CRM write; "pipe" and "add" apply to the side panel only if you approve.
 const SCENARIOS = [
   {
     key: "sync", label: "Sync your CRMs",
     steps: [
       { explain: ["Pull everything in", "Each connector reads accounts, contacts, deals and activities through the CRM's own API, then writes them into one local SQLite file in a shared shape."] },
-      { type: "cmd", text: "brain sync" },
-      { type: "sync", src: "salesforce", nodes: ["crm", "db"], edge: "crm-db", line: "2 accounts, 3 contacts, 3 deals, 3 activities", add: { acc: 2, deal: 2, act: 3 } },
-      { type: "sync", src: "hubspot", nodes: ["crm", "db"], edge: "crm-db", line: "2 accounts, 2 contacts, 3 deals, 3 activities", add: { acc: 2, deal: 2, act: 3 } },
-      { type: "sync", src: "airtable", nodes: ["crm", "db"], edge: "crm-db", line: "2 accounts, 2 contacts, 2 deals, 2 activities", add: { acc: 2, deal: 2, act: 2 } },
-      { explain: ["Add what the CRM doesn't know", "Account plans, pricing rules, competitor intel. Notes are linked to the account they mention and indexed for full-text search."] },
-      { type: "cmd", text: "brain ingest ~/notes/accounts" },
-      { type: "line", html: `<span class="ok">Imported 3 notes (2 linked to an account).</span>`, nodes: ["db"], add: { note: 3 } },
-      { type: "cmd", text: "brain status" },
-      { type: "line", html: `<span class="dim">connected:  </span>salesforce, hubspot, airtable\n<span class="dim">accounts:   </span>${S("salesforce")}2  ${S("hubspot")}2  ${S("airtable")}2\n<span class="dim">deals:      </span>${S("salesforce")}3  ${S("hubspot")}3  ${S("airtable")}2\n<span class="dim">notes:      </span>3`, nodes: ["db"] },
-      { explain: ["Ready", "Everything is in one place now. Next, ask it something."], next: "slipping" },
+      { type: "sync", src: "salesforce", nodes: ["crm", "db"], edge: "crm-db", line: "3 accounts, 4 deals", add: { acc: 3, deal: 3, pipe: { foundations: 19600, ciso: 32500 } } },
+      { type: "sync", src: "hubspot", nodes: ["crm", "db"], edge: "crm-db", line: "2 accounts, 2 deals", add: { acc: 2, deal: 1, pipe: { soc2: 23200 } } },
+      { type: "sync", src: "airtable", nodes: ["crm", "db"], edge: "crm-db", line: "3 accounts, 5 deals", add: { acc: 3, deal: 3, pipe: { foundations: 9800, soc1: 24700 } } },
+      { explain: ["Every deal gets a course level", "Deal names like \"SOC Tier 1, 12 analysts\" are matched to your course catalog, so the pipeline on the right fills in level by level."], nodes: ["db"] },
+      { type: "sys", html: `<span class="ok">✓</span> Imported 4 team notes · pricing rules, account plans, learning path`, nodes: ["db"], add: { note: 4 } },
+      { type: "say", nodes: ["db", "ai"], edge: "db-ai", html: [
+        `<p>Hi! I'm all caught up 👋</p>`,
+        `<p>I can see <strong>8 accounts and 11 deals</strong> across Salesforce, HubSpot and Airtable, each matched to one of your four course levels. What do you want to know?</p>`,
+      ] },
+      { explain: ["Ready", "Everything is in one place now. Pick the suggested reply to keep the conversation going."], next: "slipping" },
     ],
   },
   {
-    key: "slipping", label: "What's slipping?",
+    key: "slipping", label: "What's slipping?", suggest: "Which team deals have gone quiet?",
     steps: [
-      { type: "ask", text: "Which big deals have gone quiet, and what do we know about why?" },
-      { explain: ["Claude picks a tool", "There's a built-in tool for open deals with no recent activity. It runs against the local database, across all three CRMs at once."], nodes: ["ai"], edge: "db-ai" },
+      { type: "ask", text: "Which team deals have gone quiet, and do we know why?" },
+      { explain: ["Claude picks a tool", "It calls stale_deals, a built-in tool for open deals with no recent activity. It runs against the local database, across all three CRMs at once."], nodes: ["ai"], edge: "db-ai" },
       { type: "think" },
-      { type: "tool", name: "stale_deals", input: `{"days":30,"min_amount":100000}`, nodes: ["db", "ai"], edge: "db-ai",
-        result: table(["deal", "amount", "stage", "quiet"], [
-          [`${S("hubspot")}Orchard — Store ops rollout`, "$520,000", "Proposal", "35 days"],
-          [`${S("salesforce")}Helios — Grid monitoring`, "$410,000", "Proposal", "53 days"],
-          [`${S("airtable")}Northwind — Fleet analytics`, "$240,000", "Negotiation", "41 days"],
-        ], ["amount", "quiet"]) },
-      { explain: ["Then it looks for the why", "Numbers say what's stuck, notes say why. Full-text search covers your notes and every call or meeting write-up synced from the CRMs."], nodes: ["ai"] },
-      { type: "tool", name: "search_knowledge", input: `{"query":"Orchard Helios Northwind objection competitor pricing"}`, nodes: ["db", "ai"], edge: "db-ai",
-        result:
-          `<div class="snip">${S("note")}<span class="dim">Orchard: competitor intel</span><br>The competing vendor is roughly 20% <b>cheaper</b> per site but has no offline mode…</div>` +
-          `<div class="snip">${S("hubspot")}<span class="dim">Procurement check-in</span><br>Board approves capex next quarter. A <b>competitor</b> is in the running…</div>` +
-          `<div class="snip">${S("salesforce")}<span class="dim">Sent revised proposal</span><br>v2 with a phased rollout: 2 substations first, full grid in Q3.</div>` +
-          `<div class="snip">${S("note")}<span class="dim">Northwind account plan</span><br>Tom Becker (IT) has veto power and prefers on-prem…</div>` },
+      { type: "tool", status: "Looking for quiet deals in all three CRMs", nodes: ["db", "ai"], edge: "db-ai" },
+      { explain: ["Then it looks for the why", "Numbers say what's stuck, notes say why. search_knowledge covers your notes and every call or meeting write-up synced from the CRMs."], nodes: ["ai"] },
+      { type: "tool", status: "Reading your notes and call write-ups", nodes: ["db", "ai"], edge: "db-ai" },
       { explain: ["The answer", "Short, grounded in the rows it found, with the ids you'd need to act on each deal."], nodes: ["ai", "you"], edge: "ai-you" },
-      { type: "answer", html: `
-        <p>Three deals over $100k have had no activity for 30+ days, <strong>$1.17M</strong> in total:</p>
-        <ul>
-          <li><strong>Orchard: $520k, Proposal, 35 days quiet.</strong> A cheaper competitor is in play, but it has no offline mode and Orchard's rural stores lose connectivity. That's your wedge. <span class="id">(hubspot:9182)</span></li>
-          <li><strong>Helios: $410k, Proposal, 53 days.</strong> The phased v2 proposal got no reply. Quietest of the three. <span class="id">(salesforce:006Hel1)</span></li>
-          <li><strong>Northwind: $240k, Negotiation, 41 days.</strong> Stuck on price (Elena wants 12% for 3 years) and IT's on-prem preference. <span class="id">(airtable:recNw01)</span></li>
-        </ul>
-        <p>I'd start with Helios: biggest gap, and the budget holder hasn't been contacted since the proposal.</p>` },
-      { explain: ["Read-only so far", "Nothing was changed. Next: prepare for a meeting."], next: "prep" },
+      { type: "say", html: [
+        `<p>Three team deals over $20k have had no activity for 30+ days. That's <strong>$78.5k</strong> sitting still:</p>`,
+        `<ul>
+          <li><strong>Helios: CISO &amp; Executive program, $32.5k, 53 days quiet.</strong> The proposal for 5 leaders got no reply, and its close date passed 5 days ago. <span class="id">salesforce:006Hel1</span></li>
+          <li><strong>Northwind Bank: SOC Tier 1 for 12 analysts, $22.8k, 41 days.</strong> Elena asked for 15% off for paying upfront, and the cohort must finish before their March audit. <span class="id">airtable:recNw01</span></li>
+          <li><strong>Orchard: SOC Tier 2 for 8 analysts, $23.2k, 35 days.</strong> A cheaper competitor is in play, but it's video-only with no hands-on labs. That's your wedge. <span class="id">hubspot:9182</span></li>
+        </ul>`,
+        `<p>I'd start with Helios: the biggest deal, the quietest, and already past its close date.</p>`,
+      ] },
+      { type: "ask", text: ["ugh, Helios 😬", "who should I chase there?"] },
+      { explain: ["Follow-ups keep context", "Claude remembers the conversation, so \"Helios\" is enough. account_overview pulls the contacts and the latest activity."], nodes: ["ai"] },
+      { type: "tool", status: "Pulling up Helios", nodes: ["db", "ai"], edge: "db-ai" },
+      { type: "say", nodes: ["ai", "you"], edge: "ai-you", html: [
+        `<p><strong>Amina Yusuf</strong>, their CISO. She asked for the proposal.</p>`,
+        `<p>The last touch was 53 days ago: Daniel sent the executive program proposal (two board tabletops and a ransomware crisis simulation). No reply since.</p>`,
+        `<p>Executive programs often wait on a board date. A short note asking whether one has been set would be an easy way back in. Want me to put it on your list for tomorrow?</p>`,
+      ] },
+      { type: "ask", text: "yes please" },
+      { explain: ["Writes go to the owning CRM", "The Helios deal lives in Salesforce, so the task goes there. create_task proposes it; you approve it."], nodes: ["ai"] },
+      { type: "approve", id: "helios", kind: "Create a task", what: "Email Amina: has the board set a date for the executive program?",
+        body: "Due tomorrow. The proposal has had no reply for 53 days.",
+        record: "Helios — CISO & Executive program, 5 leaders", crm: "salesforce",
+        audit: `Create task: "Email Amina about a board date" due tomorrow`,
+        yes: `Saved in Salesforce (task 00T8d000004QmZt).`, no: `Nothing was written.`,
+        after: { yes: `<p>Done ✅ It's on the Helios deal in Salesforce, due tomorrow.</p>`,
+                 no: `<p>No worries, I left Salesforce alone. I'll bring Helios up again if it stays quiet.</p>` } },
+      { explain: ["Your call, every time", "Approved or declined, the proposal is in the audit log. Next: find graduates ready for their next course."], next: "upsell" },
     ],
   },
   {
-    key: "prep", label: "Prep me for a call",
+    key: "upsell", label: "Who's ready for the next level?", suggest: "Who's ready for the next level?",
     steps: [
-      { type: "ask", text: "I'm meeting Elena at Northwind tomorrow. What should I know, and can I give her the discount?" },
+      { type: "ask", text: "Who's ready for the next course level?" },
+      { explain: ["Climb the ladder", "next_level_candidates finds learners and companies that finished a level (a won deal) and have nothing booked at a higher one yet."], nodes: ["ai"], edge: "db-ai" },
+      { type: "think" },
+      { type: "tool", status: "Checking who finished a course recently", nodes: ["db", "ai"], edge: "db-ai" },
+      { explain: ["Why now?", "It reads the cohort wrap-up notes and your learning-path offer, so each suggestion comes with a reason and a discount you're allowed to give."], nodes: ["ai"] },
+      { type: "tool", status: "Reading cohort wrap-ups and your learning-path offer", nodes: ["db", "ai"], edge: "db-ai" },
+      { type: "say", nodes: ["ai", "you"], edge: "ai-you", html: [
+        `<p>Three graduates have nothing booked at the next level yet:</p>`,
+        `<ul>
+          <li><strong>Quarry Labs → SOC Tier 2.</strong> Finished SOC Tier 1 45 days ago, all 6 analysts passed. Jonas asked what's next for his two strongest. <span class="id">hubspot:4410</span></li>
+          <li><strong>Tidewater Bank → CISO &amp; Executive.</strong> Finished SOC Tier 2 40 days ago. Ken's board keeps asking him for a ransomware readiness plan. <span class="id">salesforce:001Tid6</span></li>
+          <li><strong>Sam Rivera → SOC Tier 1.</strong> Finished Cyber Foundations 30 days ago with top marks, and asked how to get a SOC job. <span class="id">airtable:recSam8</span></li>
+        </ul>`,
+        `<p>All three are inside the 60-day window for the 10% graduate discount. Quarry is the warmest: Jonas asked first.</p>`,
+      ] },
+      { type: "ask", text: ["let's do Quarry", "open a Tier 2 deal for those two analysts"] },
+      { explain: ["A new deal, in the right CRM", "create_deal opens it in HubSpot, where Quarry Labs lives, priced from your catalog with the graduate discount."], nodes: ["ai"] },
+      { type: "say", html: `<p>Here it is: 2 seats × $2,900, minus the 10% graduate discount.</p>` },
+      { type: "approve", id: "quarry", kind: "Create a deal", what: "Quarry Labs — SOC Tier 2, 2 analysts · $5,220",
+        body: "Stage: Qualification. Expected close in 30 days. Contact: Jonas Weber.",
+        record: "Quarry Labs", crm: "hubspot",
+        audit: `Create deal: "Quarry Labs — SOC Tier 2, 2 analysts" $5,220`,
+        yes: `Saved in HubSpot (deal 18834201).`, no: `Nothing was written.`,
+        add: { deal: 1, pipe: { soc2: 5220 } },
+        after: { yes: `<p>Done ✅ It's in HubSpot, and your SOC Tier 2 pipeline is now <strong>$28.4k</strong>.</p>`,
+                 no: `<p>Okay, no deal created. Quarry stays on the list for next time.</p>` } },
+      { explain: ["The ladder at work", "One graduate moved up a level, and the pipeline by level shows it. Next: prepare for a call."], next: "prep" },
+    ],
+  },
+  {
+    key: "prep", label: "Prep me for a call", suggest: "Prep me for my Northwind call",
+    steps: [
+      { type: "ask", text: ["I'm meeting Elena at Northwind Bank tomorrow", "what should I know? can I give her the 15%?"] },
       { explain: ["One call, the whole account", "account_overview returns the account with its deals, contacts, recent activity, open tasks and notes in one go."], nodes: ["ai"] },
       { type: "think" },
-      { type: "tool", name: "account_overview", input: `{"account":"Northwind"}`, nodes: ["db", "ai"], edge: "db-ai",
-        result: table(["", ""], [
-          ["deals", `Fleet analytics · $240k · Negotiation<br>Driver app add-on · $30k · Qualification`],
-          ["people", "Elena Novak, VP Operations<br>Tom Becker, IT Director"],
-          ["last call", `“Elena pushed back on per-vehicle price. Wants a 3-year term with 12% discount. DPA review outstanding.”`],
-          ["notes", "Champion: Elena. Veto: Tom (prefers on-prem). FY ends March. Churned from a competitor over poor support."],
-        ]) },
-      { explain: ["Company rules count too", "The discount question needs your pricing policy. That lives in a note, not in the CRM."], nodes: ["ai"] },
-      { type: "tool", name: "search_knowledge", input: `{"query":"discount approval multi-year pricing"}`, nodes: ["db", "ai"], edge: "db-ai",
-        result: `<div class="snip">${S("note")}<span class="dim">Pricing guardrails</span><br>Discounts above 15% need VP Sales approval. <b>Multi-year</b> deals can go to 12% without approval. Never <b>discount</b> the support tier.</div>` },
-      { type: "answer", nodes: ["ai", "you"], edge: "ai-you", html: `
-        <p><strong>Yes, you can offer 12% on a 3-year term without approval</strong>: that's exactly the multi-year limit in the pricing guardrails. Keep the support tier at full price.</p>
+      { type: "tool", status: "Pulling up everything on Northwind Bank", nodes: ["db", "ai"], edge: "db-ai" },
+      { explain: ["Company rules count too", "The discount question needs your pricing policy. That lives in a note, not in the CRM, so it searches the notes."], nodes: ["ai"] },
+      { type: "tool", status: "Checking your pricing rules", nodes: ["db", "ai"], edge: "db-ai" },
+      { type: "say", nodes: ["ai", "you"], edge: "ai-you", html: [
+        `<p>Yes: <strong>15% is allowed when a full cohort pays upfront</strong>, and that's exactly her ask. 12 seats × $1,900 is $22,800, so <strong>$19,380</strong> after the discount.</p>`,
+        `<p>A few things to know going in:</p>
         <ul>
-          <li><strong>Elena is the champion</strong>, but Tom Becker (IT) can veto and prefers on-prem. Ask whether he's joining.</li>
-          <li><strong>Lead with support SLAs.</strong> They left their last vendor over poor support.</li>
-          <li><strong>Timing:</strong> their fiscal year ends in March, so they'll want to sign before then.</li>
-          <li><strong>Open item:</strong> their legal review of the DPA. Ask for a date.</li>
-        </ul>` },
-      { explain: ["Still read-only", "Next: after a call, tell it what happened and let it update the CRM."], next: "act" },
+          <li><strong>Elena is your champion</strong>, but Tom Becker in L&amp;D owns the budget and needs completion certificates for compliance.</li>
+          <li><strong>Timing:</strong> their regulator audit is in March, so the cohort has to finish before then.</li>
+          <li><strong>Lead with lab reliability.</strong> They left their last provider because the labs kept breaking.</li>
+          <li><strong>Open item:</strong> she wants her team leads to see a sample lab first.</li>
+        </ul>`,
+      ] },
+      { type: "ask", text: ["perfect, thank you 🙏", "oh, and remind me to book the sample lab for her team leads"] },
+      { type: "say", html: `<p>Sure. Northwind Bank is tracked in Airtable, so I'll add it there:</p>` },
+      { explain: ["Same rules, different CRM", "This time the record is in Airtable. The same create_task tool routes the write there, after you approve it."], nodes: ["ai"] },
+      { type: "approve", id: "northwind", kind: "Create a task", what: "Book a sample lab walkthrough for Elena's team leads",
+        body: "Due tomorrow, before the pricing is final.",
+        record: "Northwind Bank — SOC Tier 1, 12 analysts", crm: "airtable",
+        audit: `Create task: "Book a sample lab for Northwind team leads" due tomorrow`,
+        yes: `Saved in Airtable (record recTk7Pq2).`, no: `Nothing was written.`,
+        after: { yes: `<p>Added. Good luck tomorrow! Tell me how it goes and I'll log it for you.</p>`,
+                 no: `<p>Okay, nothing added. Good luck tomorrow!</p>` } },
+      { explain: ["All three CRMs", "Salesforce, HubSpot and Airtable each take changes only after you approve them. Next: log a call and move a deal."], next: "act" },
     ],
   },
   {
-    key: "act", label: "Log a call & follow up",
+    key: "act", label: "Log a call & move a deal", suggest: "Log my call with Nadia",
     steps: [
-      { type: "ask", text: "Just spoke with Nadia at Orchard. The board decides in January, and she wants proof our offline mode works. Log it, and remind me to send the rural-stores case study by Friday." },
-      { explain: ["Find the right record", "Claude needs the exact deal and which CRM owns it, so it looks that up first."], nodes: ["ai"] },
-      { type: "think" },
-      { type: "tool", name: "sql_query", input: `{"sql":"SELECT id, name, stage FROM deals WHERE name LIKE '%Orchard%' AND is_closed = 0"}`, nodes: ["db", "ai"], edge: "db-ai",
-        result: table(["id", "name", "stage"], [[`${S("hubspot")}hubspot:9182`, "Orchard — Store ops rollout", "Proposal"]]) },
-      { explain: ["A change needs your approval", "Writing to a CRM is never automatic. Approve or decline below: the app does the same thing on your keyboard."], nodes: ["you"], edge: "ai-you" },
-      { type: "approve", id: "call",
-        what: `Log call on hubspot:9182: "Call with Nadia: board decision in January"`,
-        body: "Board decides in January. Nadia wants proof offline mode works for rural stores. Next: send rural-stores case study.",
-        record: "Orchard — Store ops rollout (120 sites)", crm: "hubspot",
-        yes: `Done in hubspot (call 84120773).`, no: `The user declined this change.` },
-      { type: "approve", id: "task",
-        what: `Create task on hubspot:9182: "Send rural-stores offline case study to Nadia" due Fri`,
-        body: "Board decides in January; competitor is cheaper but has no offline mode.",
-        record: "Orchard — Store ops rollout (120 sites)", crm: "hubspot",
-        yes: `Done in hubspot (task 84120801).`, no: `The user declined this change.` },
-      { type: "tool", name: "remember", input: `{"title":"Orchard decision timing","body":"Orchard's board decides in January…","account_id":"hubspot:5521"}`, nodes: ["db", "ai"], edge: "db-ai",
-        result: `<span class="ok">Saved note.</span> <span class="dim">(local only, so next quarter's questions know this)</span>`, add: { note: 1 } },
+      { type: "ask", text: ["just spoke with Nadia at Orchard", "budget's approved, and she wants a free trial lab for two analysts", "log it, move the deal to Negotiation, and remind me to set up the trial by Friday"] },
+      { type: "say", html: `<p>On it. Let me find the deal first.</p>` },
+      { explain: ["Find the right record", "Claude runs a read-only SQL query to find the exact deal and which CRM owns it."], nodes: ["ai"] },
+      { type: "tool", status: "Finding the Orchard deal", nodes: ["db", "ai"], edge: "db-ai" },
+      { type: "say", nodes: ["ai", "you"], edge: "ai-you", html: [
+        `<p>Found it: <strong>Orchard — SOC Tier 2, 8 analysts</strong>, $23.2k, in Proposal, owned by HubSpot.</p>`,
+        `<p>That's three changes. Nothing goes in until you say so 👇</p>`,
+      ] },
+      { explain: ["A change needs your approval", "Writing to a CRM is never automatic. Approve or decline each one: the app asks the same thing on your keyboard."], nodes: ["you"], edge: "ai-you" },
+      { type: "approve", id: "call", kind: "Log a call", what: "Call with Nadia: budget approved, wants a trial lab",
+        body: "Training budget approved. Nadia wants a free trial lab for two analysts before signing.",
+        record: "Orchard — SOC Tier 2, 8 analysts", crm: "hubspot",
+        audit: `Log call: "Call with Nadia: budget approved, wants a trial lab"`,
+        yes: `Saved in HubSpot (call 84120773).`, no: `Nothing was written.` },
+      { type: "approve", id: "stage", kind: "Move the deal", what: "Proposal → Negotiation",
+        body: "Budget is approved and they're asking for a trial, so the deal is past the proposal stage.",
+        record: "Orchard — SOC Tier 2, 8 analysts", crm: "hubspot",
+        audit: `Move stage: "Orchard — SOC Tier 2" to Negotiation`,
+        yes: `Updated in HubSpot.`, no: `The stage stays at Proposal.` },
+      { type: "approve", id: "task", kind: "Create a task", what: "Set up a trial lab for two Orchard analysts, due Friday",
+        body: "Show the hands-on labs and the SOC simulator: the competitor is video-only.",
+        record: "Orchard — SOC Tier 2, 8 analysts", crm: "hubspot",
+        audit: `Create task: "Set up Orchard trial lab" due Fri`,
+        yes: `Saved in HubSpot (task 84120801).`, no: `Nothing was written.` },
+      { explain: ["Remember it locally", "The remember tool saves the trial request as a note in brain.db. Notes stay local, so this needs no approval."], nodes: ["ai"] },
+      { type: "tool", status: "Saving the trial request to memory", nodes: ["db", "ai"], edge: "db-ai", add: { note: 1 } },
       { type: "final", nodes: ["ai", "you"] },
-      { explain: ["That's the loop", "Sync → ask → act, with you approving every change. Check the audit log on the right, or replay with different choices."], replay: true },
+      { explain: ["Every write type", "Calls, stage changes and tasks, each approved one by one. Last: keep the CRM itself clean."], next: "tidy" },
+    ],
+  },
+  {
+    key: "tidy", label: "Tidy up the CRM", suggest: "Anything messy in the CRM?",
+    steps: [
+      { type: "ask", text: "anything messy in the CRM I should fix?" },
+      { explain: ["CRM upkeep", "data_quality looks for missing amounts and courses, overdue close dates and orphan records. find_duplicates matches people by email across all three CRMs."], nodes: ["ai"], edge: "db-ai" },
+      { type: "think" },
+      { type: "tool", status: "Checking for missing and outdated fields", nodes: ["db", "ai"], edge: "db-ai" },
+      { type: "tool", status: "Looking for duplicates across CRMs", nodes: ["db", "ai"], edge: "db-ai" },
+      { type: "say", nodes: ["ai", "you"], edge: "ai-you", html: [
+        `<p>Three things, all quick:</p>`,
+        `<ul>
+          <li><strong>Sam Rivera is in there twice:</strong> as a learner in Airtable and as "Samuel Rivera" from a webinar sign-up in HubSpot. Same email.</li>
+          <li><strong>Helios is 5 days past its close date</strong>, so it's skewing your forecast.</li>
+          <li><strong>A Bluefin webinar lead</strong> has no amount, no course and no owner, so it never shows up in your level reports. <span class="id">salesforce:006Blu9</span></li>
+        </ul>`,
+      ] },
+      { type: "ask", text: ["the Bluefin one is junk", "close it as lost"] },
+      { explain: ["Stage changes work everywhere", "update_deal_stage uses the stage names each CRM already has. This one is in Salesforce."], nodes: ["ai"] },
+      { type: "approve", id: "bluefin", kind: "Move the deal", what: "Qualification → Closed Lost",
+        body: "Unqualified webinar lead: no amount, no course, no owner.",
+        record: "Bluefin — security training (webinar lead)", crm: "salesforce",
+        audit: `Move stage: "Bluefin webinar lead" to Closed Lost`,
+        yes: `Updated in Salesforce.`, no: `The stage stays at Qualification.`,
+        add: { deal: -1 },
+        after: { yes: `<p>Done, it's out of your pipeline. I can't merge records, so Sam's two entries are yours to merge in HubSpot.</p>`,
+                 no: `<p>Okay, I left it open. Sam's two entries still need merging in HubSpot whenever you get a minute.</p>` } },
+      { explain: ["That's the loop", "Sync → ask → act → tidy, with you approving every change. Check the audit log, or start over."], replay: true },
     ],
   },
 ];
@@ -550,10 +717,16 @@ const out = document.getElementById("out");
 const chips = document.getElementById("chips");
 const explainEl = document.getElementById("explain");
 const auditEl = document.getElementById("audit");
-const stats = { acc: 0, deal: 0, act: 0, note: 0 };
-const statEls = { acc: "s-acc", deal: "s-deal", act: "s-act", note: "s-note" };
+const composer = document.getElementById("composer");
+const draft = document.getElementById("draft");
+const levelsEl = document.getElementById("levels");
+const levelsFoot = document.getElementById("levels-foot");
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-let speed = 1, run = 0, skipping = false, decisions = {}, synced = false;
+const AVATAR = document.querySelector(".chat-bar .avatar").outerHTML;
+const emptyPipe = () => ({ foundations: 0, soc1: 0, soc2: 0, ciso: 0 });
+const stats = { acc: 0, deal: 0, note: 0, pipe: emptyPipe() };
+const FULL = { acc: 8, deal: 7, note: 4, pipe: { foundations: 29400, soc1: 24700, soc2: 23200, ciso: 32500 } };
+let speed = 1, run = 0, skipping = false, decisions = {}, synced = false, typingEl = null;
 
 const sleep = (ms) => new Promise((res) => {
   if (skipping || reduced) return res();
@@ -561,11 +734,136 @@ const sleep = (ms) => new Promise((res) => {
   const tick = () => (skipping || performance.now() - t0 >= ms / speed) ? res() : requestAnimationFrame(tick);
   requestAnimationFrame(tick);
 });
+const jitter = (a, b) => a + Math.random() * (b - a);
+const plain = (html) => html.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+const money = (n) => n === 0 ? "—" : n >= 1000 ? "$" + (n / 1000).toFixed(1).replace(/\.0$/, "") + "k" : "$" + n;
 
-function setStats() { for (const k in stats) document.getElementById(statEls[k]).textContent = stats[k]; }
-function addStats(a) { if (!a) return; for (const k in a) stats[k] += a[k]; setStats(); }
+// Side panel: open pipeline per course level, as bars.
+LEVELS.forEach((l, i) => {
+  const row = document.createElement("div");
+  row.className = "lvl-row";
+  row.dataset.key = l.key;
+  row.innerHTML = `<span class="nm"><b>${i + 1}</b> ${l.name}</span><span class="bar"><i></i></span><span class="amt">—</span>`;
+  levelsEl.appendChild(row);
+});
+function setStats(changed = []) {
+  const max = Math.max(1, ...Object.values(stats.pipe));
+  for (const row of levelsEl.children) {
+    const v = stats.pipe[row.dataset.key];
+    row.querySelector("i").style.width = (v / max * 100) + "%";
+    row.querySelector(".amt").textContent = money(v);
+    if (changed.includes(row.dataset.key)) { row.classList.remove("bump"); void row.offsetWidth; row.classList.add("bump"); }
+  }
+  const total = Object.values(stats.pipe).reduce((a, b) => a + b, 0);
+  levelsFoot.textContent = stats.acc === 0 ? "Nothing synced yet"
+    : `${money(total)} open · ${stats.acc} accounts · ${stats.deal} open deals · ${stats.note} notes`;
+}
+function addStats(a) {
+  if (!a) return;
+  const changed = [];
+  for (const k in a) {
+    if (k === "pipe") for (const l in a.pipe) { stats.pipe[l] += a.pipe[l]; changed.push(l); }
+    else stats[k] += a[k];
+  }
+  setStats(changed);
+}
+function fillStats(src) { Object.assign(stats, { ...src, pipe: { ...src.pipe } }); setStats(Object.keys(src.pipe)); }
+
 function scrollDown() { out.scrollTop = out.scrollHeight; }
-function el(html, cls = "ln") { const d = document.createElement("div"); d.className = cls; d.innerHTML = html; out.appendChild(d); scrollDown(); return d; }
+function add(node) { out.appendChild(node); scrollDown(); return node; }
+
+// A centred notice from the system (sync progress, hints).
+function sys(html) { const d = document.createElement("div"); d.className = "sys"; d.innerHTML = html; return add(d); }
+
+// A chat message. Messages in a row from the same sender are grouped like a messaging app.
+function msg(who, html = "", innerCls = "bubble") {
+  const last = out.lastElementChild;
+  const m = document.createElement("div");
+  m.className = "msg " + who;
+  if (last && last.classList.contains("msg") && last.classList.contains(who)) m.classList.add("cont");
+  m.innerHTML = (who === "bot" ? AVATAR : "") + `<div class="${innerCls}"></div>`;
+  m.lastChild.innerHTML = html;
+  add(m);
+  return m.lastChild;
+}
+
+function showTyping(text = "") {
+  if (!typingEl) {
+    typingEl = msg("bot", `<span class="typing"><span class="dots3"><i></i><i></i><i></i></span><span class="tt"></span></span>`).parentElement;
+  }
+  typingEl.querySelector(".tt").textContent = text;
+  scrollDown();
+}
+function hideTyping() { if (typingEl) { typingEl.remove(); typingEl = null; } }
+
+// Reveal a reply word by word, pausing a little at the end of sentences.
+async function stream(node, html, my) {
+  node.innerHTML = html;
+  scrollDown();
+  if (skipping || reduced) return;
+  const blocks = [...node.querySelectorAll("p, ul, li")];
+  blocks.forEach(b => b.hidden = true);
+  const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT);
+  const texts = [];
+  while (walker.nextNode()) texts.push(walker.currentNode);
+  const full = texts.map(t => t.nodeValue);
+  texts.forEach(t => t.nodeValue = "");
+  for (let i = 0; i < texts.length; i++) {
+    if (!full[i].trim()) { texts[i].nodeValue = full[i]; continue; }
+    for (let e = texts[i].parentElement; e && e !== node; e = e.parentElement) e.hidden = false;
+    let shown = "";
+    for (const w of full[i].split(/(\s+)/)) {
+      if (my !== run) return;
+      shown += w;
+      texts[i].nodeValue = shown;
+      if (!w.trim()) continue;
+      scrollDown();
+      await sleep(/[.!?:]$/.test(w) ? jitter(110, 190) : jitter(16, 34));
+    }
+  }
+  blocks.forEach(b => b.hidden = false);
+  scrollDown();
+}
+
+// The brain "types" for a moment before each bubble, longer for longer messages.
+async function say(parts, my) {
+  parts = [].concat(parts);
+  for (let i = 0; i < parts.length; i++) {
+    if (my !== run) return;
+    const wasTyping = !!typingEl;
+    showTyping();
+    await sleep(wasTyping ? 350 : Math.min(450 + plain(parts[i]).length * 5, 1500));
+    if (my !== run) return;
+    hideTyping();
+    await stream(msg("bot"), parts[i], my);
+    await sleep(i < parts.length - 1 ? jitter(250, 450) : 0);
+  }
+}
+
+// The user's words appear in the composer first, then get sent.
+async function typeDraft(text, my) {
+  composer.classList.add("typing");
+  if (skipping || reduced) { draft.textContent = text; return; }
+  for (let i = 0; i < text.length; i++) {
+    if (my !== run) return;
+    draft.textContent = text.slice(0, i + 1);
+    const ch = text[i];
+    await sleep(/[,.?!]/.test(ch) ? jitter(90, 180) : ch === " " ? jitter(25, 60) : jitter(14, 38));
+  }
+}
+async function send(text, my) {
+  composer.classList.add("ready");
+  await sleep(220);
+  if (my !== run) return;
+  composer.classList.remove("typing", "ready");
+  draft.textContent = "";
+  msg("me").textContent = text;
+  scrollDown();
+}
+function clearComposer() { composer.classList.remove("typing", "ready"); draft.textContent = ""; }
+
+const CRM = { salesforce: "Salesforce", hubspot: "HubSpot", airtable: "Airtable" };
+const CRM_COLOR = { salesforce: "var(--sf)", hubspot: "var(--hs)", airtable: "var(--at)" };
 
 function light(nodes = [], edge) {
   document.querySelectorAll(".node").forEach(n => {
@@ -575,7 +873,13 @@ function light(nodes = [], edge) {
   });
   document.querySelectorAll(".edge").forEach(e => e.classList.toggle("flow", e.dataset.edge === edge));
 }
-function resetPipeline() { document.querySelectorAll(".node").forEach(n => n.classList.remove("on", "done")); light([]); }
+// The last node names the CRM that received the write, in that CRM's colour.
+const writeEl = document.querySelector('[data-node="write"]');
+function writeNode(crm) {
+  writeEl.style.setProperty("--crm", crm ? CRM_COLOR[crm] : "");
+  writeEl.querySelector(".lbl").innerHTML = crm ? `Written to<br>${CRM[crm]}` : "Written<br>to the CRM";
+}
+function resetPipeline() { document.querySelectorAll(".node").forEach(n => n.classList.remove("on", "done")); writeNode(null); light([]); }
 
 function explain(title, text) {
   explainEl.innerHTML = `<h4>What's happening</h4><p class="step-title"></p><p></p>`;
@@ -583,27 +887,38 @@ function explain(title, text) {
   explainEl.children[2].textContent = text;
 }
 
-async function type(target, text, my) {
-  if (skipping || reduced) { target.textContent = text; return; }
-  for (let i = 0; i < text.length; i++) {
-    if (my !== run) return;
-    target.textContent = text.slice(0, i + 1);
-    scrollDown();
-    await sleep(text.length > 60 ? 12 : 28);
-  }
+const auditCount = document.getElementById("audit-count");
+function updateAuditCount() {
+  const n = auditEl.querySelectorAll("li:not(.empty)").length;
+  auditCount.textContent = n;
+  auditCount.hidden = n === 0;
 }
+function resetAudit() { auditEl.innerHTML = `<li class="empty">No changes proposed yet</li>`; updateAuditCount(); }
 
-function auditAdd(ok, text, crm) {
+// A proposal enters the audit log as soon as it is shown, then gets its outcome.
+function auditPending(step) {
   const empty = auditEl.querySelector(".empty");
   if (empty) empty.remove();
   const li = document.createElement("li");
-  const now = new Date();
-  li.innerHTML = `<span class="mark ${ok ? "y" : "n"}">${ok ? "✓" : "✕"}</span><div><div></div><div class="t">${crm} · ${now.toTimeString().slice(0, 5)} · ${ok ? "approved" : "declined"}</div></div>`;
-  li.querySelector("div > div").textContent = text;
+  li.className = "pending";
+  li.innerHTML = `<span class="mark w">…</span><div><div class="a"></div><div class="t"><span class="src ${step.crm}">${step.crm}</span> <span class="s"></span></div></div>`;
+  li.querySelector(".a").textContent = step.audit;
+  li.querySelector(".s").textContent = `${new Date().toTimeString().slice(0, 5)} · waiting for your approval`;
   auditEl.prepend(li);
+  updateAuditCount();
+  return li;
+}
+function auditResolve(li, ok, step) {
+  li.classList.remove("pending");
+  li.classList.add("flash");
+  const mark = li.querySelector(".mark");
+  mark.className = "mark " + (ok ? "y" : "n");
+  mark.textContent = ok ? "✓" : "✕";
+  const time = new Date().toTimeString().slice(0, 5);
+  li.querySelector(".s").textContent = ok ? `${time} · approved · written to ${CRM[step.crm]}` : `${time} · declined · nothing written`;
 }
 
-function waitForDecision(card, step, my) {
+function waitForDecision(card, step, my, entry) {
   return new Promise((resolve) => {
     const yes = card.querySelector(".yes"), no = card.querySelector(".no");
     const decide = (ok) => {
@@ -613,7 +928,8 @@ function waitForDecision(card, step, my) {
       v.className = "verdict " + (ok ? "ok" : "bad");
       v.textContent = (ok ? "✓ Approved. " : "✕ Declined. ") + (ok ? step.yes : step.no);
       card.appendChild(v);
-      auditAdd(ok, step.what.replace(/ on hubspot:\d+/, ""), step.crm);
+      scrollDown();
+      auditResolve(entry, ok, step);
       decisions[step.id] = ok;
       resolve(ok);
     };
@@ -624,28 +940,52 @@ function waitForDecision(card, step, my) {
 }
 
 function finalAnswer() {
-  const call = decisions.call, task = decisions.task;
-  const parts = [];
-  if (call && task) parts.push(`<p><strong>Logged the call and created the follow-up</strong> on the Orchard deal in HubSpot. The task is due Friday. <span class="id">(hubspot:9182)</span></p>`);
-  else if (call) parts.push(`<p><strong>Logged the call</strong> on the Orchard deal in HubSpot. I didn't create the reminder, since you declined it. Want it on your own calendar instead?</p>`);
-  else if (task) parts.push(`<p><strong>Created the follow-up</strong>, due Friday, on the Orchard deal in HubSpot. I didn't log the call, since you declined that.</p>`);
-  else parts.push(`<p>Understood: <strong>nothing was written to HubSpot.</strong> If you'd like, I can keep the call details as a private note instead.</p>`);
-  parts.push(`<p>I also saved the January decision date to the brain, so it comes up the next time someone asks about Orchard.</p>`);
-  return parts.join("");
+  const items = [["call", "logged the call"], ["stage", "moved the deal to Negotiation"], ["task", "created the trial-lab task for Friday"]];
+  const done = items.filter(([id]) => decisions[id]).map(([, t]) => t);
+  const skipped = items.filter(([id]) => !decisions[id]).map(([, t]) => t.replace(/^(logged|moved|created)/, (m) => ({ logged: "log", moved: "move", created: "create" })[m]));
+  const list = (a) => a.length > 1 ? a.slice(0, -1).join(", ") + " and " + a.at(-1) : a[0];
+  const first = done.length === 0
+    ? `<p>No problem, <strong>nothing was written to HubSpot.</strong> I can keep the call details as a private note instead, if you like.</p>`
+    : `<p>Done ✅ I <strong>${list(done)}</strong> in HubSpot.${skipped.length ? ` I didn't ${list(skipped)}, since you declined.` : ""}</p>`;
+  return [first, `<p>I also saved the trial request, so it comes up the next time anyone asks about Orchard.</p>`];
 }
 
-async function play(key) {
+function suggestRow(label, onClick, ...extra) {
+  const row = document.createElement("div");
+  row.className = "suggest";
+  row.innerHTML = `<span class="hint">Suggested ${extra.length ? "replies" : "reply"}</span>`;
+  for (const [text, fn, cls] of [[label, onClick, "reply"], ...extra]) {
+    const b = document.createElement("button");
+    b.className = cls || "reply";
+    b.textContent = text;
+    b.onclick = fn;
+    row.appendChild(b);
+  }
+  return add(row);
+}
+
+async function play(key, cont = false) {
   const my = ++run;
   skipping = false;
   document.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c.dataset.key === key));
   const sc = SCENARIOS.find(s => s.key === key);
-  out.innerHTML = "";
+  hideTyping();
+  clearComposer();
+  // A proposal left unanswered when you switch scenarios is closed, never written.
+  auditEl.querySelectorAll("li.pending").forEach(li => {
+    li.classList.remove("pending");
+    li.querySelector(".mark").className = "mark n";
+    li.querySelector(".mark").textContent = "✕";
+    li.querySelector(".s").textContent = "not answered · nothing written";
+  });
+  if (cont) out.querySelectorAll(".suggest").forEach(r => r.remove());
+  else { out.innerHTML = ""; typingEl = null; }
   resetPipeline();
-  if (key === "act") decisions = {};
+  decisions = {};
 
   // Later scenarios need data in the brain; quietly fill it if Sync was skipped.
-  if (key !== "sync" && !synced) { Object.assign(stats, { acc: 6, deal: 6, act: 8, note: 3 }); setStats(); synced = true; el(`<span class="dim">(demo data already synced: 6 accounts, 8 deals, 3 notes)</span>`); }
-  if (key === "sync") { Object.assign(stats, { acc: 0, deal: 0, act: 0, note: 0 }); setStats(); }
+  if (key !== "sync" && !synced) { fillStats(FULL); synced = true; sys(`Demo data synced · 8 accounts, 11 deals, 4 notes`); }
+  if (key === "sync") fillStats({ acc: 0, deal: 0, note: 0, pipe: emptyPipe() });
 
   for (const step of sc.steps) {
     if (my !== run) return;
@@ -653,93 +993,87 @@ async function play(key) {
     if (step.nodes || step.edge) light(step.nodes || [], step.edge);
 
     switch (step.type) {
-      case "cmd": {
-        const d = el(`<span class="prompt">$ </span><span></span>`);
-        await sleep(250);
-        await type(d.lastChild, step.text, my);
-        await sleep(350);
-        break;
-      }
       case "ask": {
-        const d = el(`<span class="prompt">$ </span>brain ask "<span class="q"></span>"`, "ln user-q");
+        hideTyping();
         light(["you"]);
-        await sleep(250);
-        await type(d.querySelector(".q"), step.text, my);
-        await sleep(400);
+        const texts = [].concat(step.text);
+        for (const t of texts) {
+          await sleep(jitter(300, 550));
+          await typeDraft(t, my);
+          if (my !== run) return;
+          await send(t, my);
+        }
+        await sleep(jitter(450, 750)); // the brain "reads" before answering
         break;
       }
       case "sync": {
-        const d = el(`<span class="dim">Syncing </span>${S(step.src)}<span class="thinking"></span>`);
-        await sleep(1100);
+        const d = sys(`<span class="spin"></span>Syncing ${S(step.src)}`);
+        await sleep(jitter(900, 1300));
         if (my !== run) return;
-        d.innerHTML = `<span class="dim">Syncing </span>${S(step.src)}<span class="ok">✓</span> ${step.line}`;
+        d.innerHTML = `<span class="ok">✓</span>${S(step.src)} synced · ${step.line}`;
         addStats(step.add);
-        await sleep(300);
+        await sleep(250);
         break;
       }
-      case "line":
-        el(step.html); addStats(step.add); await sleep(700); break;
-      case "think": {
-        const d = el(`<span class="thinking">thinking</span>`);
-        await sleep(1100);
-        d.remove();
+      case "sys":
+        sys(step.html); addStats(step.add); await sleep(700); break;
+      case "think":
+        showTyping();
+        await sleep(jitter(700, 1000));
         break;
-      }
-      case "tool": {
-        el(`<span class="tool">  · ${step.name}</span> <span class="dim">${step.input.replace(/</g, "&lt;")}</span>`);
-        await sleep(700);
+      case "tool":
+        showTyping(step.status);
+        await sleep(jitter(1400, 2000));
         if (my !== run) return;
-        el(step.result, "result");
         addStats(step.add);
-        await sleep(1500);
         break;
-      }
-      case "answer": {
-        const d = el(step.html, "answer");
-        d.style.opacity = 0;
-        await sleep(100);
-        d.style.transition = "opacity .4s"; d.style.opacity = 1;
-        await sleep(1200);
+      case "say":
+        await say(step.html, my);
+        await sleep(600);
         break;
-      }
       case "approve": {
+        hideTyping();
         light(["you"], "ai-you");
-        explain("Your call", "The app stops and waits. Nothing reaches HubSpot unless you approve it.");
-        const card = el(`<div class="h">Proposed change</div><div class="what"></div><div class="meta"></div><div class="meta"></div><div class="acts"><button class="yes">Approve</button><button class="no">Decline</button></div>`, "approve");
+        explain("Your call", `The app stops and waits. Nothing reaches ${CRM[step.crm]} unless you approve it. The proposal is already in the audit log.`);
+        await sleep(300);
+        const card = msg("bot", `<div class="h">Needs your approval · ${step.crm}</div><div class="kind"></div><div class="what"></div><div class="meta"></div><div class="meta"></div><div class="acts"><button class="yes">Approve</button><button class="no">Decline</button></div>`, "approve");
+        card.querySelector(".kind").textContent = step.kind;
         card.querySelector(".what").textContent = step.what;
         card.querySelectorAll(".meta")[0].textContent = step.body;
-        card.querySelectorAll(".meta")[1].textContent = `record: ${step.record} · in: ${step.crm}`;
+        card.querySelectorAll(".meta")[1].textContent = `Record: ${step.record}`;
+        scrollDown();
+        const entry = auditPending(step);
         const wasSkipping = skipping; skipping = false;
-        const ok = await waitForDecision(card, step, my);
+        const ok = await waitForDecision(card, step, my, entry);
         skipping = wasSkipping;
         if (my !== run) return;
         if (ok) {
+          writeNode(step.crm);
           light(["you", "write"], "you-write");
-          explain("Written to HubSpot", "The change goes to the CRM that owns the record, is mirrored locally so follow-up questions see it, and is added to the audit log.");
-          addStats({ act: 1 });
+          explain(`Written to ${CRM[step.crm]}`, "The change goes to the CRM that owns the record, is mirrored locally so follow-up questions see it, and its outcome is added to the audit log.");
+          addStats(step.add);
         } else {
           explain("Declined", "Recorded in the audit log as declined. Claude is told not to retry unless you ask.");
         }
-        await sleep(1200);
+        await sleep(900);
+        if (step.after) await say(ok ? step.after.yes : step.after.no, my);
         break;
       }
       case "final":
         light(step.nodes, "ai-you");
-        el(finalAnswer(), "answer");
-        await sleep(800);
+        await say(finalAnswer(), my);
+        await sleep(600);
         break;
     }
 
     if (step.next) {
       const nxt = SCENARIOS.find(s => s.key === step.next);
-      const row = el(`<button class="next-btn">Next: ${nxt.label} →</button>`, "replay-row");
-      row.firstChild.onclick = () => play(step.next);
       if (key === "sync") synced = true;
+      suggestRow(nxt.suggest, () => play(step.next, true));
     }
     if (step.replay) {
-      const row = el(`<button class="ghost-btn">↺ Replay with different choices</button><button class="next-btn">Start over from sync</button>`, "replay-row");
-      row.children[0].onclick = () => play("act");
-      row.children[1].onclick = () => { synced = false; auditEl.innerHTML = `<li class="empty">No changes proposed yet</li>`; play("sync"); };
+      suggestRow("↺ Replay with different choices", () => play(key, true),
+        ["Start over", () => { synced = false; resetAudit(); play("sync"); }, "reply ghost"]);
     }
   }
   light([]);
@@ -762,7 +1096,8 @@ document.getElementById("speed").onclick = (e) => {
 };
 
 // Start the first scenario when the demo scrolls into view.
-el(`<span class="dim">Pick a scenario above, or scroll here to start.</span><span class="cursor"></span>`);
+setStats();
+sys(`Pick a scenario above, or scroll here to start`);
 const io = new IntersectionObserver((entries) => {
   if (entries.some(e => e.isIntersecting) && run === 0) { play("sync"); io.disconnect(); }
 }, { threshold: 0.35 });
